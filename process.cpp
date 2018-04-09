@@ -27,3 +27,9 @@ namespace TinyProcessLib
 		return write(data.c_str(), data.size());
 	}
 } // TinyProsessLib
+
+#ifdef _WIN32
+#include "process_win.cpp"
+#else
+#include "process_unix.cpp"
+#endif
