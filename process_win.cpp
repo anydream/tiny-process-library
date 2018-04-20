@@ -7,13 +7,13 @@ namespace TinyProcessLib
 {
 	static std::wstring utf8to16(const std::string &strU8)
 	{
-		int size = MultiByteToWideChar(CP_UTF8, 0, strU8.c_str(), strU8.size(), nullptr, 0);
+		int size = MultiByteToWideChar(CP_UTF8, 0, strU8.c_str(), static_cast<int>(strU8.size()), nullptr, 0);
 		if (!size)
 			return L"";
 
 		std::wstring strU16;
 		strU16.resize(size);
-		MultiByteToWideChar(CP_UTF8, 0, strU8.c_str(), strU8.size(), static_cast<wchar_t*>(&strU16[0]), size);
+		MultiByteToWideChar(CP_UTF8, 0, strU8.c_str(), static_cast<int>(strU8.size()), static_cast<wchar_t*>(&strU16[0]), size);
 
 		return strU16;
 	}
